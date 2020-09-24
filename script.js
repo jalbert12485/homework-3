@@ -88,22 +88,29 @@ function generatePassword(){
   determineLength();
   determineCharacters();
   var pass="";
+  var i=0;
+  var j=0;
 
-for(i=0; i<lengthOfPass; i++){
+while((i < lengthOfPass) && (j < 1000)){
 
   var numb=Math.floor(Math.random()*4);
   if(numb===0 && useCap){
     pass=pass+" "+randomCapitalLetter();
+    i++;
   }
   if(numb===1 && useLow){
     pass=pass+" "+randomLowerLetter();
+    i++;
   }
   if(numb===2 && useNum){
     pass=pass+" "+randomNumber();
+    i++;
   }
   if(numb===3 && useSpec){
     pass=pass+" "+randomSpecialCharacter();
+    i++;
   }
+  j++;
 }
 
 return pass;
