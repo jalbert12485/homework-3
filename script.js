@@ -1,20 +1,24 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Change content of password.
 function writePassword() {
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
 
-  // passwordText.value = password;
   document.getElementById("password").innerHTML = generatePassword();
 
 }
 
+//Declaring need variables.
+
+// useCap defines whether or not capital letters should be used.
 var useCap;
+// useLow defines whether or not lower case letters should be used.
 var useLow;
+// useNum defines whether or not numbers should be used.
 var useNum;
+// useSpec defines whether or not special numbers should be used.
 var useSpec;
+// lenghtOfPass is the desired length of the password.
 var lengthOfPass;
 
 // Prompt for length of password.
@@ -33,7 +37,7 @@ function checkLength(){
 
 }
 
-
+// Prompt user to see what type of characters they want to use.
 function determineCharacters(){
 useCap=confirm("Do you want capital letters?");
 useLow=confirm("Do you want lower case letters?");
@@ -43,7 +47,7 @@ checkForOne();
 }
 
 
-
+// Check to make sure you have atleast one type of character to make your password from.
 function checkForOne(){
 while( !(useCap || useLow || useNum || useSpec)){
   alert("You must use atleast one of these for your password.")
@@ -52,15 +56,17 @@ while( !(useCap || useLow || useNum || useSpec)){
 }
 
 
-
+// Generate a random capital letter.
 function randomCapitalLetter(){
+  // Generate the unicode number of capital letter.
   var a=Math.floor(Math.random()*26)+65;
+  // Convert to unicode.
   a="&#"+a;
   return a;
 }
 
 
-
+//Generate a random lower case letter in unicode.
 function randomLowerLetter(){
   var a=Math.floor(Math.random()*26)+97;
   a="&#"+a;
@@ -68,14 +74,14 @@ function randomLowerLetter(){
 }
 
 
-
+// Generate a random special character in unicode.
 function randomSpecialCharacter(){
   var a=Math.floor(Math.random()*4)+35;
   a="&#"+a;
   return a;
 }
 
-
+// Generate a random number in unicode.
 function randomNumber(){
   var a=Math.floor(Math.random()*10)+48;
   a="&#"+a;
@@ -83,7 +89,7 @@ function randomNumber(){
 }
 
 
-
+//Generate the password.
 function generatePassword(){
   determineLength();
   determineCharacters();
@@ -91,9 +97,13 @@ function generatePassword(){
   var i=0;
   var j=0;
 
+
+  //Loops until we have the proper number of characters or we've run the loop 1000 times.
+  //Note if any person would want a very long password (~1000 characters or more) we would to change this.
 while((i < lengthOfPass) && (j < 1000)){
 
   var numb=Math.floor(Math.random()*4);
+  // If the random number is a 0 and capitals are used, then we adjoin a capital letter to the password.  Next we keep track of the fact that we added this character.
   if(numb===0 && useCap){
     pass=pass+" "+randomCapitalLetter();
     i++;
