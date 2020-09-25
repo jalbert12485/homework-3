@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 // Change content of password.
 function writePassword() {
 
-  document.getElementById("password").innerHTML = generatePassword();
+  document.querySelector("#password").innerHTML = generatePassword();
 
 }
 
