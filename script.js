@@ -30,8 +30,8 @@ function determineLength(){
 
 // Check length for valid input.
 function checkLength(){
-  if(!(Number.isInteger(lengthOfPass) && (lengthOfPass > 0))){
-    alert("The length of your password must be a natural number.");
+  if(!(Number.isInteger(lengthOfPass) && (lengthOfPass > 0) && (lengthOfPass < 129))){
+    alert("The length of your password must be a natural number less than or equal to 128.");
     determineLength();
   }
 
@@ -100,7 +100,7 @@ function generatePassword(){
 
   //Loops until we have the proper number of characters or we've run the loop 1000 times.
   //Note if any person would want a very long password (~1000 characters or more) we would to change this.
-while((i < lengthOfPass) && (j < 1000)){
+while((i < lengthOfPass)){
 
   var numb=Math.floor(Math.random()*4);
   // If the random number is a 0 and capitals are used, then we adjoin a capital letter to the password.  Next we keep track of the fact that we added this character.
@@ -120,7 +120,7 @@ while((i < lengthOfPass) && (j < 1000)){
     pass=pass+" "+randomSpecialCharacter();
     i++;
   }
-  j++;
+
 }
 
 return pass;
